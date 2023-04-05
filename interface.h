@@ -1,5 +1,5 @@
-#ifndef MAININTERFACE_H
-#define MAININTERFACE_H
+#ifndef INTERFACE_H
+#define INTERFACE_H
 
 #include <QMainWindow>
 
@@ -18,8 +18,8 @@
 #include <stdio.h>
 #include <iostream>
 
-#include <opencv4/opencv2//imgproc.hpp>
-#include <opencv4/opencv2//highgui.hpp>
+#include <opencv4/opencv2/imgproc.hpp>
+#include <opencv4/opencv2/highgui.hpp>
 #include <opencv4/opencv2/opencv.hpp>
 
 
@@ -27,39 +27,29 @@ using namespace cv;
 using namespace std;
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class maininterface; }
+namespace Ui { class interface; }
 QT_END_NAMESPACE
 
-class maininterface : public QMainWindow
+class interface : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    maininterface(QWidget *parent = nullptr);
-    ~maininterface();
-
+    interface(QWidget *parent = nullptr);
+    ~interface();
     QString fileName;
     QGraphicsScene* scene;
-    //QGraphicsView* view;
+    int gv_width;
+    int gv_height;
+
+
 
 private slots:
+    void on_pb_exit_clicked();
+
     void on_pb_loadImage_clicked();
 
-
-    void on_pb_close_clicked();
-
 private:
-    Ui::maininterface *ui;
-
-
-
+    Ui::interface *ui;
 };
-
-
-#endif // MAININTERFACE_H
-
-
-
-
-
-
+#endif // INTERFACE_H
